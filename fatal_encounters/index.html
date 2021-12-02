@@ -10,14 +10,25 @@
         <div id="mapid"></div>
 
         <style>
-            #mapid { height: 500px; }
+            #mapid { height: 500px; width: 1000px }
         </style>
+
+        <h1>Years</h1>
+        <form id="myForm">
+          <div class="container">
+            2000 <input type="range" min="2000" max="2021" step="1" id="redVal" value="2000"> 2021
+           </div> 
 
         <svg id="bar" width="500" height="400"></svg>
         <p>words</p>
+
+
+
     </div>
+
+
 </body>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
