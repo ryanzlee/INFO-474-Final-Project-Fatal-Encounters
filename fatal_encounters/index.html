@@ -13,13 +13,21 @@
             #mapid { height: 500px; width: 1000px }
         </style>
 
-        <h1>Years</h1>
+        <h1>Years</h1> 
         <form id="myForm">
           <div class="container">
             2000 <input type="range" min="2000" max="2021" step="1" id="sliderVal" value="2000"> 2021
            </div> 
         </form>
-        <div id="bar" ></div>
+        <label for="categorySelect">Sort by: </label>
+        <select class="custom-select" id="barSort">
+          <option selected value="alpha">Alphabetical</option>
+          <option value="asc">Ascending</option>
+          <option value="des">Descending</option>
+        </select>
+        <div id="bar">
+        </div>
+
         <p>words</p>
 
 

@@ -34,6 +34,8 @@ d3.csv("./test.csv").then(function (dataset) {
 
   chartData.splice(-1)
 
+  chartData.sort((a, b) => a.Value.localeCompare(b.Value))
+
   var x = d3.scaleBand()
     .range([0, width])
     .domain(chartData.map(function (d) { return d.Value; }))
@@ -107,8 +109,27 @@ d3.csv("./test.csv").then(function (dataset) {
     .attr("height", function (d) { return height - y(d.Frequency); })
     .delay(function (d, i) { console.log(i); return (i * 100) })
 
-
-
+    function updateChart(selectedGroup) {
+      // recompute density estimation
+      if (selectedGroup == "alpha") {
+      chartData.sort((a, b) => a.Value.localeCompare(b.Value))
+    } else if (selectedGroup == "desc") {
+      chartData.sort((a, b) => a.Frequency.localeCompare(b.Frequency))
+    } else {
+      chartData.sort((a, b) => b.Frequency.localeCompare(a.Frequency))}
+    
+    svg.datum(chartData)
+    .transition()
+    .duration(800)
+    }
+  
+      // update the chart
+  
+    // Listen to the slider?
+    d3.select("#barSort").on("change", function(d){
+      selectedGroup = this.value
+      updateChart(selectedGroup)
+    })
   // Three function that change the tooltip when user hover / move / leave a cell
 
 })
