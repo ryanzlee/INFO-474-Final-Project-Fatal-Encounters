@@ -44,9 +44,13 @@ d3.csv("./test.csv").then(function (data) {
   data.forEach(function (d) {
     d.Latitude = +d.Latitude;
     d.Longitude = +d.Longitude;
-
-    markers.push({ "long": d.Longitude, "lat": d.Latitude })
+    if (d.Date.substring(d.Date.length - 2, d.Date.length) === "00") {
+      markers.push({ "long": d.Longitude, "lat": d.Latitude })
+    }
   });
+
+  
+
 
   // setting the map view to the center of the us
   // setting the map view to the center of the us
@@ -63,6 +67,7 @@ d3.csv("./test.csv").then(function (data) {
 
   // Add a svg layer to the map
   L.svg().addTo(map);
+  
 
 
   // Select the svg area and add circles:
@@ -87,11 +92,49 @@ d3.csv("./test.csv").then(function (data) {
       .attr("cy", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).y })
   }
 
+  // slider stuff
+  var myForm = document.getElementById("myForm");
+   myForm.addEventListener("change", test);
+
+
+   function test() {
+    var sliderVal = parseFloat(document.getElementById('sliderVal').value)
+    var filteredData = data.filter(function(d) {
+      return d.Date.substring(d.Date.length - 2, d.Date.length) === sliderVal.toString().substring(2,4)
+    })
+
+    d3.select("#mapid")
+    .select("svg")
+    .remove()
+    markers = []
+    filteredData.forEach(function (d) {
+
+      d.Latitude = +d.Latitude;
+      d.Longitude = +d.Longitude;
+      markers.push({ "long": d.Longitude, "lat": d.Latitude })
+      console.log(d.Date.substring(d.Date.length - 2, d.Date.length))
+    })
+
+    // Add a svg layer to the map
+    L.svg().addTo(map);
+      
+    // Select the svg area and add circles:
+    d3.select("#mapid")
+      .select("svg")
+      .selectAll("myCircles")
+      .data(markers)
+      .enter()
+      .append("circle")
+      .attr("cx", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).x })
+      .attr("cy", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).y })
+      .attr("r", 4)
+      .style("fill", "red")
+      .attr("stroke", "red")
+      .attr("stroke-width", .1)
+      .attr("fill-opacity", .2)
+   }
 
 
   // If the user change the map (zoom or drag), I update circle position:
   map.on("moveend", update);
 });
-
-
-
