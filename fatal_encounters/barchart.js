@@ -67,14 +67,13 @@ d3.csv("./test.csv").then(function (dataset) {
  
 
     var mouseover = function(d) {
-
       tooltip
-
         .style("opacity", 1)
         d3.select(this)
         .style("stroke", "black")
         .style("opacity", 1)
     }
+
     var mousemove = function(d) {
       tooltip
         .style("left", (d3.event.pageX + 10) + "px")
@@ -82,6 +81,7 @@ d3.csv("./test.csv").then(function (dataset) {
         .style("display", "inline-block")
         .html("State: " + d.Value + "<br> Fatal Encounters: " + d.Frequency)
     }
+    
     var mouseleave = function(d) {
       tooltip
         .style("display","none")

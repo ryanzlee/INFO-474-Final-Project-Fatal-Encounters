@@ -6,19 +6,47 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <h1 style="text-align:center" id="title">Fatal Encounters</h1>
+  <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of the amount of people that are killed during interactions with the police in the United States.</br><a href="https://www.kaggle.com/konradb/fatal-encounters-database">Fatal Encounters Database</a></h3>
+  
     <div id="main">
+        <h2 style="text-align:center" id="vizTitle">Map Visualization</h2>
         <div id="mapid"></div>
 
-        <style>
-            #mapid { height: 500px; width: 1000px }
-        </style>
 
-        <h1>Years</h1> 
+
+        <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3> 
         <form id="myForm">
-          <div class="container">
-            2000 <input type="range" min="2000" max="2021" step="1" id="sliderVal" value="2000"> 2021
-           </div> 
+            <div class="container">
+            2000<input type="range" list="tickmarks" min="2000" max="2021" step="1" id="sliderVal" value="2000">2021
+            <datalist id="tickmarks">
+              <option value="2000"></option>
+              <option value="2001"></option>
+              <option value="2002"></option>
+              <option value="2003"></option>
+              <option value="2004"></option>
+              <option value="2005"></option>
+              <option value="2006"></option>
+              <option value="2007"></option>
+              <option value="2008"></option>
+              <option value="2009"></option>
+              <option value="2010"></option>
+              <option value="2011"></option>
+              <option value="2012"></option>
+              <option value="2013"></option>
+              <option value="2014"></option>
+              <option value="2015"></option>
+              <option value="2016"></option>
+              <option value="2017"></option>
+              <option value="2018"></option>
+              <option value="2019"></option>
+              <option value="2020"></option>
+              <option value="2021"></option>
+              </datalist>
+           </div>   
         </form>
+
+        <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
         <label for="categorySelect">Sort by: </label>
         <select class="custom-select" id="barSort">
           <option selected value="alpha">Alphabetical</option>
@@ -27,11 +55,6 @@
         </select>
         <div id="bar">
         </div>
-
-        <p>words</p>
-
-
-
     </div>
 
 
