@@ -58,7 +58,7 @@ a {
 .flex-child:first-child {
     width: 100px;
     height: fit-content;
-    background-color: hsl(0, 2%, 67%);
+    background-color: hsl(0, 0%, 90%);
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;

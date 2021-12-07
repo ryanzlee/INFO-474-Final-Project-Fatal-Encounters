@@ -30,40 +30,7 @@ d3.csv("./test.csv").then(function (data) {
   d3.select("#mapid").select("svg")
   .attr("pointer-events", "auto")
   
- // Tooltip for hover information
-  // var tooltip = d3.select("#mapid")
-  //   .append("div")
-  //   .style("opacity", 0)
-  //   .attr("class", "tooltip")
-  //   .style("background-color", "white")
-  //   .style("border", "solid")
-  //   .style("border-width", "1px")
-  //   .style("border-radius", "5px")
-  //   .style("padding", "5px")
-
-  // // When the user hovers over the tooltip
-  // var mouseover = function(d) {
-  //   tooltip.style("opacity", 1)
-  //   d3.select(this)
-  //   .style("stroke, black")
-  //   .style("opacity", 1)
-  // }
-
-  // var mousemove = function(d) {
-  //   tooltip
-  //     .style("left", (d3.event.pageX + 10) + "px")
-  //     .style("top", (d3.event.pageY - 10) + "px")
-  //     .style("display", "inline-block")
-  //     .html("Latitude:" + d.lat)
-  // }
-
-  // // When the user gets off the tooltip
-  // var mouseleave = function(d) {
-  //   tooltip
-  //     .style("display", "none")
-  //   d3.select(this)
-  //     .style("stroke", "none")
-  // }
+ 
 
   // Select the svg area and add circles:
   var circles = d3.select("#mapid")
@@ -79,10 +46,6 @@ d3.csv("./test.csv").then(function (data) {
       .attr("stroke", "red")
       .attr("stroke-width", .1)
       .attr("fill-opacity", .2)
-      // .on("mouseover", mouseover)
-      // .on("mousemove", mousemove)
-      // .on("mouseleave", mouseleave)
-    // Tooltip stuffs
     
   
   

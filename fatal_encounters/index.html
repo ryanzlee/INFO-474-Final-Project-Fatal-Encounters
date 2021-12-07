@@ -1,30 +1,34 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>INFO 474 Final Project</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <title>INFO 474 Final Project</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <h1 style="text-align:center" id="title">Fatal Encounters</h1>
-  <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of the amount of people that are killed during interactions with the police in the United States.</br><a href="https://www.kaggle.com/konradb/fatal-encounters-database">Fatal Encounters Database</a></h3>
-  
-    <div id="main">
-      <h2 style="text-align:center" id="vizTitle">Map Visualization</h2>
-      <div id="mapid"></div>
-        
-      <div class="flex-container">
-        <div id="textBox" class="flex-child">
-          <div id="yearDat"></div>
-          <div id="totalDat"></div>
-          <div id="stateDat"></div>
-          <div id="forceDat"></div>
-        </div>
-        
-        <div class="flex-child">
-          <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3> 
-          <form id="myForm">
-            <div class="container">
+  <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of the
+    amount of people that are killed during interactions with the police in the United States.</br><a
+      href="https://www.kaggle.com/konradb/fatal-encounters-database">Fatal Encounters Database</a></h3>
+
+  <div id="main">
+    <h2 style="text-align:center" id="vizTitle">Map & Table Visualization</h2>
+    <div id="mapid"></div>
+
+    <div class="flex-container">
+      <div id="textBox" class="flex-child">
+        <div id="yearDat"></div>
+        <div id="totalDat"></div>
+        <div id="stateDat"></div>
+        <div id="forceDat"></div>
+      </div>
+
+      <div class="flex-child">
+        <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3>
+        <form id="myForm">
+          <div class="container">
             2000<input type="range" list="tickmarks" min="2000" max="2021" step="1" id="sliderVal" value="2000">2021
             <datalist id="tickmarks">
               <option value="2000"></option>
@@ -49,22 +53,24 @@
               <option value="2019"></option>
               <option value="2020"></option>
               <option value="2021"></option>
-              </datalist>
-            </div>   
-          </form>
-        </div>
+            </datalist>
+          </div>
+        </form>
       </div>
-        <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
-        <label for="categorySelect">Sort by: </label>
-        <select class="custom-select" id="barSort">
-          <option selected value="alpha">Alphabetical</option>
-          <option value="asc">Ascending</option>
-          <option value="des">Descending</option>
-        </select>
-        <div id="bar">
-        </div>
     </div>
+    <div >
+      <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
 
+      <label for="categorySelect">Fatal Encounters vs: </label>
+      <select class="custom-select" id="barSort" onchange="update(this.value)">
+        <option selected value="Race">Race</option>
+        <option value="State">State</option>
+        <option value="Ages">Age</option>
+      </select>
+      <div id="bar">
+      </div>
+    </div>
+  </div>
 
 </body>
 <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -72,10 +78,15 @@
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
 <!-- Load Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
 
 <script src="./main.js"></script>
 <script src="./barchart.js"></script>
 <script src="./table.js"></script>
+
 </html>

@@ -1,14 +1,15 @@
 d3.csv("./test.csv").then(function (data) {
     
     var parseDate = d3.timeParse("%m/%d/%y")
-
+    console.log(data);
     // Change date values to Date
     data.forEach(function(d) {
         d.Date = parseDate(d.Date);
     })
-
+    console.log(data);
     //Organize by Year
     var nested = d3.nest().key(function (d) {
+        console.log(d.Date.getUTCFullYear())
         return d.Date.getUTCFullYear();
     }).entries(data);
     
@@ -287,32 +288,6 @@ d3.csv("./test.csv").then(function (data) {
         })
     }
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
- 
+
 //Name,Age,Gender,Race, Location of death (city),State, Highest level of force, Intended use of force (Developing)
