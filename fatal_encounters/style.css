@@ -40,10 +40,35 @@ a {
 
 #mapid {
     height: 500px; 
-    width: 1000px; 
+    width: 1000px;
     margin-left: auto; 
     margin-right: auto; 
 }
+
+.flex-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.flex-child {
+    flex: 1;
+    margin: auto;
+}
+
+.flex-child:first-child {
+    width: 100px;
+    height: fit-content;
+    background-color: hsl(0, 2%, 67%);
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 20 px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
 
 input[type="range"] {
     width: 500px;

@@ -10,13 +10,20 @@
   <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of the amount of people that are killed during interactions with the police in the United States.</br><a href="https://www.kaggle.com/konradb/fatal-encounters-database">Fatal Encounters Database</a></h3>
   
     <div id="main">
-        <h2 style="text-align:center" id="vizTitle">Map Visualization</h2>
-        <div id="mapid"></div>
-
-
-
-        <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3> 
-        <form id="myForm">
+      <h2 style="text-align:center" id="vizTitle">Map Visualization</h2>
+      <div id="mapid"></div>
+        
+      <div class="flex-container">
+        <div id="textBox" class="flex-child">
+          <div id="yearDat"></div>
+          <div id="totalDat"></div>
+          <div id="stateDat"></div>
+          <div id="forceDat"></div>
+        </div>
+        
+        <div class="flex-child">
+          <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3> 
+          <form id="myForm">
             <div class="container">
             2000<input type="range" list="tickmarks" min="2000" max="2021" step="1" id="sliderVal" value="2000">2021
             <datalist id="tickmarks">
@@ -43,9 +50,10 @@
               <option value="2020"></option>
               <option value="2021"></option>
               </datalist>
-           </div>   
-        </form>
-
+            </div>   
+          </form>
+        </div>
+      </div>
         <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
         <label for="categorySelect">Sort by: </label>
         <select class="custom-select" id="barSort">
@@ -69,4 +77,5 @@
 
 <script src="./main.js"></script>
 <script src="./barchart.js"></script>
+<script src="./table.js"></script>
 </html>

@@ -107,7 +107,10 @@ d3.csv("./test.csv").then(function (dataset) {
     .duration(800)
     .attr("y", function (d) { return y(d.Frequency); })
     .attr("height", function (d) { return height - y(d.Frequency); })
-    .delay(function (d, i) { console.log(i); return (i * 100) })
+    .delay(function (d, i) { 
+      // console.log(i); 
+      return (i * 100) 
+    })
 
     function updateChart(selectedGroup) {
       // recompute density estimation
