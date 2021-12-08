@@ -1,6 +1,6 @@
-var margin = { top: 30, right: 30, bottom: 70, left: 60 },
+var margin = { top: 30, right: 30, bottom: 80, left: 60 },
   width = 1000 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var s1 = d3.select("#bar")
@@ -16,6 +16,7 @@ var x = d3.scaleBand()
   .padding(0.2);
 var xAxis = s1.append("g")
   .attr("transform", "translate(0," + height + ")")
+  .attr("class", "xAxis")
 
 // Initialize the Y axis
 var y = d3.scaleLinear()
@@ -46,7 +47,7 @@ function update(selectedVar) {
       });
 
       data = data.filter(function (e) {
-        return e.Frequency > 10
+        return e.Frequency > 30
       });
 
       data = data.sort((a, b) => a.Value.localeCompare(b.Value))
@@ -54,6 +55,8 @@ function update(selectedVar) {
       if (a == 'Ages') {
         data.shift();
         data.unshift(data.pop())
+      } else if (a == 'Gender') {
+        data.shift();
       }
 
       return data
@@ -148,6 +151,7 @@ function update(selectedVar) {
 
     d3.select('.xlabel')
       .text(selectedVar)
+
     // If less group in the new dataset, I delete the ones not in use anymore
     u
       .exit()

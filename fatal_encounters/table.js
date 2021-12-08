@@ -6,35 +6,31 @@ d3.csv("./testTable.csv").then(function (data) {
     data.forEach(function(d) {
         d.Date = parseDate(d.Date);
     })
-    console.log(data);
+
     //Organize by Year
     var nested = d3.nest().key(function (d) {
-        console.log(d.Date.getUTCFullYear())
         return d.Date.getUTCFullYear();
     }).entries(data);
-    
-    
-    //console.log(nested);
 
     //Grab current year of selector
     var currentYear = "2000"
     var currentData = nested.find(d => d.key == currentYear)
     currentData = currentData.values;
-    console.log(currentData);
 
     // Create nest for States
     var StateNest = d3.nest().key(function (d) {
         return d.State;
     }).entries(currentData);
-    console.log(StateNest)
 
+    // Instantiate top 3 state variables
     var state1 = {"key": "A", "values": []}
     var state2 = {"key": "A", "values": []}
     var state3 = {"key": "A", "values": []}
+
+    // For Each State, go through and determine top three most occured based on currrent year.
     for (i = 0; i < StateNest.length; i++) {
         var currentKey = StateNest[i].key;
         var currentNum = StateNest[i].values.length;
-        //console.log(currentKey, currentNum);
         if (state1.values.length < currentNum) {
             var saved = state1;
             state1 = StateNest[i];
@@ -56,7 +52,7 @@ d3.csv("./testTable.csv").then(function (data) {
         }
     }
 
-    console.log(state1, state2, state3);
+
     var stateList = [state1, state2, state3];
     
     // Create Nest for force
@@ -64,13 +60,16 @@ d3.csv("./testTable.csv").then(function (data) {
         return d["Highest level of force"];
     }).entries(currentData)
     
+    // Instantiate top 3 force occurences 
     var force1 = {"key": "A", "values": []}
     var force2 = {"key": "A", "values": []}
     var force3 = {"key": "A", "values": []}
+
+    // Go through each different force and saved the top 3 for that given year.
     for (i = 0; i < HighestForceNest.length; i++) {
         var currentKey = HighestForceNest[i].key;
         var currentNum = HighestForceNest[i].values.length;
-        console.log(currentKey, currentNum);
+
         if (force1.values.length < currentNum) {
             var saved = force1;
             force1 = HighestForceNest[i];
@@ -92,12 +91,12 @@ d3.csv("./testTable.csv").then(function (data) {
         }
     }
 
-    console.log(force1, force2, force3);
+
     var forceList = [force1, force2, force3];
 
     //Create and append text 
     d3.select("#textBox").select("#yearDat")
-    .append("h3")
+    .append("h2")
     .attr("dy", '0em')
     .text("Current Year: " + currentYear);
 
@@ -106,6 +105,7 @@ d3.csv("./testTable.csv").then(function (data) {
     .append("h4")
     .text("Total Occurences: " + currentData.length);
     
+    // Append Most common use of force
     d3.select("#textBox").select("#forceDat")
     .append("h4")
     .attr("dy", '0em')
@@ -122,6 +122,7 @@ d3.csv("./testTable.csv").then(function (data) {
         return d.key + ": " + d.values.length; 
     })
 
+    // Append most common states
     d3.select("#textBox").select("#stateDat")
     .append("h4")
     .attr("dy", '0em')
@@ -157,8 +158,10 @@ d3.csv("./testTable.csv").then(function (data) {
         update()
     }
 
+
+    // function that updates table based upon current slider year.
     function update() {
-        d3.select("#textBox").selectAll("div").select("h3")
+        d3.select("#textBox").selectAll("div").select("h2")
         .remove()
 
         d3.select("#textBox").selectAll("div").select("h4")
@@ -170,13 +173,11 @@ d3.csv("./testTable.csv").then(function (data) {
 
         var currentData = nested.find(d => d.key == currentYear)
         currentData = currentData.values;
-        console.log(currentData);
 
         // Create nest for States
         var StateNest = d3.nest().key(function (d) {
             return d.State;
         }).entries(currentData);
-        console.log(StateNest)
 
         var state1 = {"key": "A", "values": []}
         var state2 = {"key": "A", "values": []}
@@ -184,7 +185,6 @@ d3.csv("./testTable.csv").then(function (data) {
         for (i = 0; i < StateNest.length; i++) {
             var currentKey = StateNest[i].key;
             var currentNum = StateNest[i].values.length;
-            //console.log(currentKey, currentNum);
             if (state1.values.length < currentNum) {
                 var saved = state1;
                 state1 = StateNest[i];
@@ -206,7 +206,7 @@ d3.csv("./testTable.csv").then(function (data) {
             }
         }
 
-        console.log(state1, state2, state3);
+
         var stateList = [state1, state2, state3];
         
         // Create Nest for force
@@ -220,7 +220,6 @@ d3.csv("./testTable.csv").then(function (data) {
         for (i = 0; i < HighestForceNest.length; i++) {
             var currentKey = HighestForceNest[i].key;
             var currentNum = HighestForceNest[i].values.length;
-            console.log(currentKey, currentNum);
             if (force1.values.length < currentNum) {
                 var saved = force1;
                 force1 = HighestForceNest[i];
@@ -242,12 +241,12 @@ d3.csv("./testTable.csv").then(function (data) {
             }
         }
 
-        console.log(force1, force2, force3);
+
         var forceList = [force1, force2, force3];
 
         //Create and append text 
         d3.select("#textBox").select("#yearDat")
-        .append("h3")
+        .append("h2")
         .attr("dy", '0em')
         .text("Current Year: " + currentYear);
 
@@ -289,5 +288,3 @@ d3.csv("./testTable.csv").then(function (data) {
     }
 
 })
-
-//Name,Age,Gender,Race, Location of death (city),State, Highest level of force, Intended use of force (Developing)

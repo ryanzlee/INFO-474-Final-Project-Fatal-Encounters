@@ -5,16 +5,19 @@
   <meta charset="UTF-8">
   <title>INFO 474 Final Project</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./favi.png" />
 </head>
 
 <body>
   <h1 style="text-align:center" id="title">Fatal Encounters</h1>
-  <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of the
-    amount of people that are killed during interactions with the police in the United States.</br><a
-      href="https://www.kaggle.com/konradb/fatal-encounters-database">Fatal Encounters Database</a></h3>
+  <h3 style="text-align:center" id="description">With our project, we hope to provide more context on the scale of people that are killed during interactions with the police in the United States. There have been many instances where people have been killed by interactions with the police, but there is always some lack of context such as where, how often, and what circumstances cause law enforcement to use deadly force.</br><a
+      href="https://www.kaggle.com/konradb/fatal-encounters-database">Source: Fatal Encounters Database</a></h3>
 
   <div id="main">
     <h2 style="text-align:center" id="vizTitle">Map & Table Visualization</h2>
+    <h3 style="text-align:center" id="vizdescription">Fatal encounters occured all across the nation. 
+      <br>In this visualization, we have mapped out all the reported fatal encounters across the U.S.</br>
+      The table helps detail pertinent information about these fatal encounters.<br>Did you know that in 2020 alone, police have killed over 1439 people using a gun?</br></h3>
     <div id="mapid"></div>
 
     <div class="flex-container">
@@ -24,6 +27,8 @@
         <div id="stateDat"></div>
         <div id="forceDat"></div>
       </div>
+
+
 
       <div class="flex-child">
         <h3 style="text-align:center" id="years">Use the slider to see how many cases there were in each year! </h3>
@@ -59,13 +64,16 @@
       </div>
     </div>
     <div>
-      <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
+      <h2 style="text-align:center" id="vizTitle">Bar Graph Visualization</h2>
+      <h3 style="text-align:center" id="vizdescription">In this visualization, we have created a bar chart that contains reported fatal encounters across the U.S. vs your selected category. 
+        <br>You can explore how the number changes between Race, State, Age , and Gender!</br></h3>
       <div style="text-align:center">
-        <label for="categorySelect">Fatal Encounters vs: </label>
+        <label for="categorySelect" id="years">Fatal Encounters vs: </label>
         <select class="custom-select" id="barSort" onchange="update(this.value)">
           <option selected value="Race">Race</option>
           <option value="State">State</option>
           <option value="Ages">Age</option>
+          <option value="Gender">Gender</option>
         </select>
       </div>
       <div id="bar">
@@ -73,7 +81,14 @@
     </div>
   </div>
 
+  <footer>
+    <p>Yeju Kim, Ryan Lee, Tommy Lam</p>
+    <p>Info 474 Interactive Information Visualization Final Project</p>
+  </footer>
+
 </body>
+
+
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
