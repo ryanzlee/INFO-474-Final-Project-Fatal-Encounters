@@ -1,4 +1,4 @@
-d3.csv("./test.csv").then(function (data) {
+d3.csv("./testTable.csv").then(function (data) {
 
     var parseDate = d3.timeParse("%m/%d/%y")
 
