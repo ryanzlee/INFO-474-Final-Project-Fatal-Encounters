@@ -58,15 +58,16 @@
         </form>
       </div>
     </div>
-    <div >
+    <div>
       <h2 style="text-align:center" id="vizTitle">Variable/Attributes something something</h2>
-
-      <label for="categorySelect">Fatal Encounters vs: </label>
-      <select class="custom-select" id="barSort" onchange="update(this.value)">
-        <option selected value="Race">Race</option>
-        <option value="State">State</option>
-        <option value="Ages">Age</option>
-      </select>
+      <div style="text-align:center">
+        <label for="categorySelect">Fatal Encounters vs: </label>
+        <select class="custom-select" id="barSort" onchange="update(this.value)">
+          <option selected value="Race">Race</option>
+          <option value="State">State</option>
+          <option value="Ages">Age</option>
+        </select>
+      </div>
       <div id="bar">
       </div>
     </div>
@@ -86,7 +87,8 @@
   crossorigin=""></script>
 
 <script src="./main.js"></script>
-<script src="./barchart.js"></script>
 <script src="./table.js"></script>
+<script src="./barchart.js"></script>
+
 
 </html>

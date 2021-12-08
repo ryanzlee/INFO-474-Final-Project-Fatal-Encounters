@@ -1,7 +1,7 @@
 d3.csv("./test.csv").then(function (data) {
-    
+
     var parseDate = d3.timeParse("%m/%d/%y")
-    console.log(data);
+
     // Change date values to Date
     data.forEach(function(d) {
         d.Date = parseDate(d.Date);
